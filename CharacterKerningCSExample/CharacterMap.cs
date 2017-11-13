@@ -122,21 +122,6 @@ namespace CharacterKerningCSExample
 
 };
 
-
-        private static List<string> CHARSPC = new List<string> {
-//private static   List<string> CHARSPC =  new List<string> {
-		"11111111",	// ; $20 (32)
-		"11111111",
-        "11111111",
-        "11111111",
-        "11111111",
-        "11111111",
-        "11111111",
-};
-
-
-
-
         private static List<string> CHAR05 = new List<string> {
 //private static   List<string> CHAR0 =  new List<string> {
 		"11110001",	// ; $30 (48)

@@ -34,12 +34,10 @@ namespace CharacterKerningCSExample
                 else
                 {
                     bool Is5Character = false;
+                    var characterIndex = 0;
                     foreach (var letter in inputString)
                     {
-                        if (CharacterMap.PaletteList4Column[letter - 48] == null)
-                        {
-                            Is5Character = true;
-                        }
+                        Is5Character |= CharacterMap.PaletteList4Column[letter - 48] == null;
 
                         List<string> currentPalette;
 
@@ -60,10 +58,24 @@ namespace CharacterKerningCSExample
                         {
                             var truncatedString = line.Remove(0, Is5Character ? 3 : 4);
 
-                            displayPalette[index] = $"{displayPalette[index]}1{truncatedString}";
+                            if (characterIndex == 2 && displayPalette[index].Length < 11)
+                            {
+                                displayPalette[index] = displayPalette[index] + "1";
+                            }
+
+                            if (Is5Character && inputString.Length > 2)
+                            {
+                                displayPalette[index] = $"{displayPalette[index]}{truncatedString}";
+                            }
+
+                            else
+                            {
+                                displayPalette[index] = $"{displayPalette[index]}{truncatedString}1"; 
+                            }
 
                             index++;
                         }
+                        characterIndex++;
                     }
 
                     foreach (var line in displayPalette)
